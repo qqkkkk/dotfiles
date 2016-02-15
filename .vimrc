@@ -1,3 +1,15 @@
+if has("syntax")
+    syntax on
+endif
+
+set number
+set title
+set ambiwidth=double
+set smartindent
+set hidden
+set virtualedit=block
+set backspace=indent,eol,start
+
 "tabをスペース4つに展開＆Tabの設定
 set tabstop=4
 set autoindent
