@@ -49,6 +49,9 @@ NeoBundle 'mattn/emmet-vim'
 NeoBundle 'LeafCage/yankround.vim'
 NeoBundle 'kien/ctrlp.vim'
 
+"lightline.vim
+NeoBundle 'itchyny/lightline.vim'
+
 call neobundle#end()
 "Required
 filetype plugin indent on
