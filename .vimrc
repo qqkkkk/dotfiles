@@ -14,47 +14,53 @@ set backspace=indent,eol,start
 set tabstop=4
 set autoindent
 set expandtab
-set shiftwidth=4
-
-set nocompatible
 filetype off
 
-if has('vim_starting')
-    "bundleで管理するディレクトリを指定
-    set runtimepath+=~/.vim/bundle/neobundle.vim
-    call neobundle#begin(expand('~/.vim/bundle/'))
+if &compatible
+    set nocompatible
 endif
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
-"NeoBundle自体をNeoBundleで管理
+call dein#begin(expand('~/.vim/dein'))
 
-NeoBundleFetch 'Shougo/neobundle.vim'
 
-"ここにプラグインを追加する
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'scrooloose/syntastic'
+call dein#add('Shougo/dein.vim')
+call dein#add('Shougo/vimproc.vim', {'build': 'make'})
+call dein#add('Shougo/neocomplete.vim')
+call dein#add('Shougo/neomru.vim')
+call dein#add('Shougo/neosnippet')
+
+call dein#add('scrooloose/nerdtree')
+call dein#add('scrooloose/syntastic')
 
 "jedi-vim
-NeoBundle 'davidhalter/jedi-vim'
+call dein#add('davidhalter/jedi-vim')
 
 "vim-quickrun
-NeoBundle 'thinca/vim-quickrun'
+call dein#add('thinca/vim-quickrun')
 
 "surround.vim
-NeoBundle 'tpope/vim-surround'
+call dein#add('tpope/vim-surround')
 
 "emmet-vim
-NeoBundle 'mattn/emmet-vim'
+call dein#add('mattn/emmet-vim')
 
 "yankround.vim
-NeoBundle 'LeafCage/yankround.vim'
-NeoBundle 'kien/ctrlp.vim'
+call dein#add('LeafCage/yankround.vim')
+call dein#add('kien/ctrlp.vim')
 
 "lightline.vim
-NeoBundle 'itchyny/lightline.vim'
+call dein#add('itchyny/lightline.vim')
 
-call neobundle#end()
-"Required
-filetype plugin indent on
+
+call dein#end()
+call dein#save_state()
+
+" もし、未インストールものものがあったらインストール
+if dein#check_install()
+  call dein#install()
+endif
+
 
 "NERDTree shortcut
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
